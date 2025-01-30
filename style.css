@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border: 3.5px solid black;
+}
+
+.logo {
+  width: 6rem;
+  height: auto;
+}
+
+h1 {
+  margin-top: 3rem;
+}
+
+/* Index: Categories */
+
+.category_list_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.category-button {
+  max-width: 250px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+}
+
+.category-button:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .category_list_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Produkt side */
+
+.product_list_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: relative;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-info {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.category {
+  gap: 20px;
+  margin-top: 2rem;
+  font-size: 14px;
+  color: gray;
+}
+
+/* .price-wrapper {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 20px; 
+} */
+
+.prev-price {
+  font-size: 14px;
+  color: grey;
+  text-decoration: line-through;
+}
+
+.new-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+}
+
+.sale-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.sold-out {
+  position: relative;
+}
+
+.sold-out img {
+  opacity: 0.5; /* Makes sold-out products look faded */
+}
+
+.sold-out-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: gray;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+a {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 4rem; /* Ensures gap between text and link */
+  display: inline-block;
+  text-decoration: underline;
+}
+
+/* ------- */
+
+/* ------------ product side, single view ----------------- */
+
+.product-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Showcase */
+.product-showcase img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Details & Purchase Sections */
+.details-box,
+.purchase-options {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 1;
+  align-content: start;
+}
+
+.details-box h1,
+.purchase-options h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  grid-column: span 2;
+}
+
+.details-box h4,
+.purchase-options h4 {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  grid-column: 1;
+}
+
+.details-box p,
+.purchase-options label {
+  font-size: 1rem;
+  margin: 5px 0;
+  grid-column: 2;
+}
+
+.brand-emblem img {
+  width: 100px;
+  margin-top: 10px;
+}
+
+.slogan {
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Purchase Options */
+.purchase-options select {
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.cart-button {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.cart-button:hover {
+  background-color: #444;
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 768px) {
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .product-showcase {
+    grid-column: 1 / 2;
+  }
+
+  .details-box,
+  .purchase-options {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 1;
+  }
+}
