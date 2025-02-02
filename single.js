@@ -1,38 +1,40 @@
-const productData = {
-  id: 1163,
-  gender: "Men",
-  category: "Apparel",
-  subcategory: "Topwear",
-  articletype: "Tshirts",
-  basecolour: "Blue",
-  season: "Summer",
-  productionyear: 2011,
-  usagetype: "Sports",
-  productdisplayname: "Sahara Team India Fanwear Round Neck Jersey",
-  parsed: 1,
-  soldout: 0,
-  relid: 1163,
-  price: 895,
-  discount: null,
-  variantname: "Roundneck Jersey",
-  brandname: "Nike",
-  brandbio: "Nike, the leading global sports brand, creates products that combine performance and style.",
-};
+// 1️⃣ Hent produkterne fra API'et
+fetch("https://kea-alt-del.dk/t7/api/products")
+  .then((res) => res.json())
+  .then(showProducts)
+  .catch((error) => console.error("Fejl ved hentning af data:", error));
 
-// console.log("JavaScript script er indlæst korrekt");
-// document.getElementById("product-name").textContent = "Test produktnavn";
+function showProducts(products) {
+  const container = document.querySelector(".product_list_container");
 
-document.getElementById("product-name").textContent = productData.name;
-document.getElementById("product-model").textContent = "Model: " + productData.model;
-document.getElementById("product-color").textContent = "Color: " + productData.color;
-document.getElementById("product-description").textContent = productData.description;
-document.getElementById("product-price").textContent = "Price: " + productData.price;
+  // 2️⃣ Vælg kun de 4 produkter, du vil vise (f.eks. med bestemte ID'er)
+  const selectedIDs = [1163, 1164, 1165, 1525]; // Dine 4 udvalgte produkter
+  const selectedProducts = products.filter((product) => selectedIDs.includes(product.id));
 
-// Tilføj billeder dynamisk
-// const productImages = document.getElementById("product-images");
-// productData.images.forEach((image) => {
-//   const img = document.createElement("img");
-//   img.src = image;
-//   img.alt = productData.name;
-//   productImages.appendChild(img);
-// });
+  // 3️⃣ Loop gennem de valgte produkter og opret HTML dynamisk
+  selectedProducts.forEach((product) => {
+    const productHTML = `
+      <div class="product-card ${product.soldout ? "sold-out" : ""}">
+        ${product.soldout ? '<span class="sold-out-label">Sold Out</span>' : ""}
+        <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="${product.productdisplayname}">
+        <div class="product-info">
+          <h3>${product.productdisplayname}</h3>
+          <p class="category">${product.category} | ${product.brandname}</p>
+          ${
+            product.discount
+              ? `
+            <div class="price-wrapper">
+              <span class="prev-price">Prev. DKK ${product.price},-</span>
+              <span class="new-price">Now DKK ${Math.round(product.price * (1 - product.discount / 100))},-</span>
+              <span class="sale-tag">-${product.discount}%</span>
+            </div>`
+              : `<p class="price">DKK ${product.price},-</p>`
+          }
+          <a href="product.html?id=${product.id}">Read More</a>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML += productHTML;
+  });
+}
