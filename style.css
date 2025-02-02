@@ -165,6 +165,107 @@ a {
 
 /* ------------ product side, single view ----------------- */
 
+.sahara-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sahara Image */
+.sahara-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Info & Purchase Sections */
+.sahara-info,
+.sahara-purchase {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 1;
+  align-content: start;
+}
+
+.sahara-info h1,
+.sahara-purchase h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  grid-column: span 2;
+}
+
+.sahara-info h4,
+.sahara-purchase label {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  grid-column: 1;
+}
+
+.sahara-info p,
+.sahara-purchase p {
+  font-size: 1rem;
+  margin: 5px 0;
+  grid-column: 2;
+}
+
+.slogan {
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Purchase Box */
+.sahara-purchase select {
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.sahara-cart-button {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.sahara-cart-button:hover {
+  background-color: #444;
+}
+
+/* Desktop Layout */
+@media screen and (min-width: 768px) {
+  .sahara-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .sahara-image {
+    grid-column: 1 / 2;
+  }
+
+  .sahara-info,
+  .sahara-purchase {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 1;
+  }
+}
+
+/* -----------------// Oprindelig kode */
+/* 
 .product-layout {
   display: flex;
   flex-direction: column;
@@ -173,14 +274,14 @@ a {
   margin: 0 auto;
 }
 
-/* Product Showcase */
+
 .product-showcase img {
   width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
-/* Details & Purchase Sections */
+
 .details-box,
 .purchase-options {
   background-color: #fff;
@@ -225,7 +326,7 @@ a {
   margin-top: 10px;
 }
 
-/* Purchase Options */
+
 .purchase-options select {
   padding: 10px;
   font-size: 1rem;
@@ -248,7 +349,7 @@ a {
   background-color: #444;
 }
 
-/* Desktop Styles */
+
 @media screen and (min-width: 768px) {
   .product-layout {
     display: grid;
@@ -267,4 +368,4 @@ a {
     grid-template-columns: subgrid;
     grid-column: span 1;
   }
-}
+} */
